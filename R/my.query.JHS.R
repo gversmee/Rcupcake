@@ -25,7 +25,7 @@
 # #                         myvector  = c(nhanesPcbs, nhanesDemog),
 # #                         url       = "https://nhanes.hms.harvard.edu/"
 # #              )
-#' @export my.query
+#' @export my.query.JHS
 
 my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
   
