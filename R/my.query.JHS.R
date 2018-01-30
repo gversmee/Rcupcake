@@ -127,7 +127,7 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
         list(
           field=list(
             pui = jsonlite::unbox(entry$pui),
-            dataType = jsonlite::unbox(entry$dataType$name)
+            dataType = jsonlite::unbox(entry$dataType)
           ),
           alias=jsonlite::unbox(
             entry$pui
