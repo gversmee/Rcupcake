@@ -85,10 +85,7 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
               pui = jsonlite::unbox(pathFields[[j]]$pui),
               dataType = jsonlite::unbox(pathFields[[j]]$dataType)
             ),
-            alias=jsonlite::unbox(
-              #pathFields[[j]]$displayName
-              pathList[i]
-            )
+            alias = unlist(strsplit(jsonlite::unbox(pathList[i]), "/"))[length()]
           )
         )
         querySELECT <- c( querySELECT, ( myField ) )
@@ -129,7 +126,7 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
             pui = jsonlite::unbox(entry$pui),
             dataType = jsonlite::unbox(entry$dataType)
           ),
-          alias = unlist(strsplit(jsonlite::unbox(entry$pui), "/"))[length(unlist(strsplit(jsonlite::unbox(entry$pui), "/")))]
+          alias = unlist(strsplit(jsonlite::unbox(entry$pui), "/"))[length()]
         )
       )
       querySELECT <- c( querySELECT, ( myField ) )
