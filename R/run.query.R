@@ -52,14 +52,14 @@ run.query <- function( query, url, verbose = TRUE ){
   }
   
   resultId <- result$resultId
-  resultStatus <- content(GET(paste(IRCT_RESULTS_BASE_URL, 'resultStatus/', resultId, sep='')))$status
+  resultStatus <- httr::content(httr::GET(paste(IRCT_RESULTS_BASE_URL, 'resultStatus/', resultId, sep='')))$status
   while(resultStatus != 'AVAILABLE') {
     if(resultStatus == 'ERROR'){
       message("Query Failed")
       break
     }else{
       Sys.sleep(2)
-      resultStatus <- content(GET(paste(IRCT_RESULTS_BASE_URL, 'resultStatus/', resultId, sep='')))$status
+      resultStatus <- httr::content(httr::GET(paste(IRCT_RESULTS_BASE_URL, 'resultStatus/', resultId, sep='')))$status
       if (verbose == TRUE) {
         message(paste("...", resultStatus, sep=''))
       }
