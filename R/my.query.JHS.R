@@ -85,11 +85,22 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
               pui = jsonlite::unbox(pathFields[[j]]$pui),
               dataType = jsonlite::unbox(pathFields[[j]]$dataType)
             ),
-            alias=as.character(unlist(strsplit(jsonlite::unbox(pathList[i]), "/"))[length(unlist(strsplit(jsonlite::unbox(pathList[i]), "/")))])
+            alias = structure(strsplit(jsonlite::unbox(pathList[i]), "/")[[1]][length(unlist(strsplit(jsonlite::unbox(pathList[i]), "/")))], class = class(jsonlite::unbox(pathList[i])))
+            )
           )
         )
         querySELECT <- c( querySELECT, ( myField ) )
       }
+        
+        test <- strsplit(jsonlite::unbox(pathList[i]), "/")[[1]][length(unlist(strsplit(jsonlite::unbox(pathList[i]), "/")))]
+        class(test)
+        test <- structure(test, class = class(jsonlite::unbox(pathList[i])))
+        test
+        
+        
+        
+        
+        
     } else {
       
       pathSegs <- unlist(strsplit(pathList[[i]],"/"))
@@ -126,12 +137,16 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
             pui = jsonlite::unbox(entry$pui),
             dataType = jsonlite::unbox(entry$dataType)
           ),
-          alias=as.character(unlist(strsplit(jsonlite::unbox(entry$pui), "/"))[length(unlist(strsplit(jsonlite::unbox(entry$pui), "/")))])
+          alias=structure(strsplit(jsonlite::unbox(entry$pui), "/")[[1]][length(unlist(strsplit(jsonlite::unbox(entry$pui), "/")))], class = class(jsonlite::unbox(entry$pui)))
         )
       )
       querySELECT <- c( querySELECT, ( myField ) )
     }
   }
+  
+  
+  
+  
   
   if( verbose == TRUE ){
     message( "Generating the WHERE portion of the query, from the first path selected" )
