@@ -88,7 +88,6 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
             alias = structure(strsplit(jsonlite::unbox(pathList[i]), "/")[[1]][length(unlist(strsplit(jsonlite::unbox(pathList[i]), "/")))], class = class(jsonlite::unbox(pathList[i])))
             )
           )
-        )
         querySELECT <- c( querySELECT, ( myField ) )
       }
     } else {
