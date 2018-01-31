@@ -69,7 +69,7 @@ run.query <- function( query, url, verbose = TRUE ){
   response <- httr::content(httr::GET(paste(IRCT_GET_RESULTS_FORMATS_URL, 
                                             result$resultId, sep = "/")))
   
-  responseFormat <- ".CSV"
+  responseFormat <- "CSV"
   if( ! responseFormat %in% response ){
     message( "Sorry, the", "is not available for this query.")
   }
