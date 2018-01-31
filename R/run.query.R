@@ -54,14 +54,17 @@ run.query <- function( query, url, responseFormat = "CSV", outputPath = paste0(g
     message(paste("Your request is being processed, Query #", result$resultId))
   }
   
-  status <- httr::content(httr::GET(paste(IRCT_GET_RESULTS_STATUS_URL, 
-                                          result$resultId, sep = "/")))$status
   
-  while ( status == "RUNNING" ) {
-    Sys.sleep(3)
-    status <- httr::content(httr::GET(paste(IRCT_GET_RESULTS_STATUS_URL, 
-                                            result$resultId, sep = "/")))$status
-    
+  resultStatus <- content(GET(paste(IRCT_RESULTS_BASE_URL, 'resultStatus/', resultId, sep='')))$status;
+  while(resultStatus != 'AVAILABLE') {
+    if(resultStatus == 'ERROR'){
+      message("Query Failed");
+      break;
+    }else{
+      Sys.sleep(2);
+      resultStatus <- content(GET(paste(IRCT_RESULTS_BASE_URL, 'resultStatus/', resultId, sep='')))$status;
+      print(paste("Still running...", resultStatus, sep=''));
+    }
   }
   
   response <- httr::content(httr::GET(paste(IRCT_GET_RESULTS_FORMATS_URL, 
