@@ -5,24 +5,18 @@
 #' after applying the getchildren function, it returns a JSON query
 #'
 #' @param myfields  A vector with the fields of interest
-#' @param myvector  A vector with the paths of interest, generated applying the \code{getchildren}
+#' @param myvector  A vector with the paths of interest, the function will apply the \code{getchildren}
 #' function
 #' @param url  The url.
 #' @param verbose By default \code{FALSE}. Change it to \code{TRUE} to get an on-time log from the function.
 #' @return A JSON query. 
 #' @author Alba Gutierrez, Gregoire Versmee, Gabor Korodi
 #' @examples
-# # nhanesPcbs <- get.children(
-# #              url         = "https://nhanes.hms.harvard.edu/",
-# #              fieldname   = "/nhanes/Demo/laboratory/laboratory/pcbs/"
-# #              )
-# # nhanesDemog <- get.children(
-# #              url         = "https://nhanes.hms.harvard.edu/",
-# #              fieldname   = "/nhanes/Demo/demographics/demographics/"
-# #             )
+# # fieldname1   = "/nhanes/Demo/laboratory/laboratory/pcbs/"
+# # fieldname2   = "/nhanes/Demo/demographics/demographics/"
 #  
 # # queryExample <- my.query( myfields = "AGE|PCB153",
-# #                         myvector  = c(nhanesPcbs, nhanesDemog),
+# #                         myvector  = c(fieldname1, fieldname2),
 # #                         url       = "https://nhanes.hms.harvard.edu/"
 # #              )
 #' @export my.query.JHS
@@ -35,7 +29,6 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
             which contains all available paths for the resource")
   }
    
-  
   # Use get.children() to build the path list 
   pathList <- c()
   for (i in 1:length(myvector))  { 

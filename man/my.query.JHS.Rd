@@ -10,7 +10,7 @@ my.query.JHS(myfields, myvector, url, verbose = FALSE)
 \arguments{
 \item{myfields}{A vector with the fields of interest}
 
-\item{myvector}{A vector with the paths of interest, generated applying the \code{getchildren}
+\item{myvector}{A vector with the paths of interest, the function will apply the \code{getchildren}
 function}
 
 \item{url}{The url.}
@@ -25,5 +25,5 @@ Given a vector with the fields of interest, and the vector generated with the pa
 after applying the getchildren function, it returns a JSON query
 }
 \author{
-Gregoire Versmee, Gabor Korodi
+Alba Gutierrez, Gregoire Versmee, Gabor Korodi
 }
