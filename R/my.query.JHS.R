@@ -10,7 +10,7 @@
 #' @param url  The url.
 #' @param verbose By default \code{FALSE}. Change it to \code{TRUE} to get an on-time log from the function.
 #' @return A JSON query. 
-#' @author Gregoire Versmee, Gabor Korodi
+#' @author Alba Gutierrez, Gregoire Versmee, Gabor Korodi
 #' @examples
 # # nhanesPcbs <- get.children(
 # #              url         = "https://nhanes.hms.harvard.edu/",
@@ -34,9 +34,20 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
     message(" Creating a list with the path from the vector list
             which contains all available paths for the resource")
   }
+   
+  
+  # Use get.children() to build the path list 
+  pathList <- c()
+  for (i in 1:length(myvector))  { 
+     i <- 1
+      myvector[i] <- URLencode(myvector[i])
+      children <- get.children(myvector[i], url)
+      pathList <- c(pathlist, children)
+  }
+    
   
   # Filter fields by values in vector using grep
-  pathList <- grep(myfields, myvector, value=TRUE)
+  pathList <- grep(myfields, pathList, value=TRUE)
   
   
   if( verbose == TRUE){
