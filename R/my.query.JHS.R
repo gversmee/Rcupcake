@@ -42,7 +42,7 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
      i <- 1
       myvector[i] <- URLencode(myvector[i])
       children <- get.children(myvector[i], url)
-      pathList <- c(pathlist, children)
+      pathList <- c(pathList, children)
   }
     
   
