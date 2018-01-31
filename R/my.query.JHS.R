@@ -158,5 +158,5 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
   querySTRING <- list( select = querySELECT,
                        where  = list( queryWHERE ) )
   
-  return( jsonlite::toJSON ( querySTRING, pretty=TRUE ) )
+  run.query(query = queryString, url = url)
   }
