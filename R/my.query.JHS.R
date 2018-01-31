@@ -39,7 +39,6 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
   # Use get.children() to build the path list 
   pathList <- c()
   for (i in 1:length(myvector))  { 
-     i <- 1
       myvector[i] <- URLencode(myvector[i])
       children <- get.children(myvector[i], url)
       pathList <- c(pathList, children)
@@ -152,7 +151,7 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
   queryWHERE <- c()
   
   field <- unlist(strsplit(myfields, "[|]"))[1]
-  whereClause <- grep( field, pathList, value=TRUE)
+  whereClause <- grep(field, pathList, value=TRUE)
   
   
   # Assuming STRING variable, but not sure
