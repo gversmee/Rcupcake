@@ -37,7 +37,6 @@ my.query.JHS <- function(varvector, myvector, url, verbose = FALSE) {
       pathList <- c(pathList, children)
   }
     
-  varvector <- c("400", "now smoke", "Age(yrs)")
   varvector <- sub("\\(", "\\\\(", sub("\\)", "\\\\)", test))
   
   myfields <- ""
