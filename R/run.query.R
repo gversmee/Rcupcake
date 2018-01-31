@@ -54,7 +54,7 @@ run.query <- function( query, url, responseFormat = "CSV", outputPath = paste0(g
     message(paste("Your request is being processed, Query #", result$resultId))
   }
   
-  
+  resultId <- result$resultId
   resultStatus <- content(GET(paste(IRCT_RESULTS_BASE_URL, 'resultStatus/', resultId, sep='')))$status;
   while(resultStatus != 'AVAILABLE') {
     if(resultStatus == 'ERROR'){
