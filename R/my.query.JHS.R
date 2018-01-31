@@ -91,16 +91,6 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
         )
         querySELECT <- c( querySELECT, ( myField ) )
       }
-        
-        test <- strsplit(jsonlite::unbox(pathList[i]), "/")[[1]][length(unlist(strsplit(jsonlite::unbox(pathList[i]), "/")))]
-        class(test)
-        test <- structure(test, class = class(jsonlite::unbox(pathList[i])))
-        test
-        
-        
-        
-        
-        
     } else {
       
       pathSegs <- unlist(strsplit(pathList[[i]],"/"))
@@ -143,10 +133,6 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
       querySELECT <- c( querySELECT, ( myField ) )
     }
   }
-  
-  
-  
-  
   
   if( verbose == TRUE ){
     message( "Generating the WHERE portion of the query, from the first path selected" )
