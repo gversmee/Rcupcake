@@ -6,10 +6,7 @@
 #' @param query A JSON query, created with my.query function or contained in a
 #' text file. 
 #' @param url  The url.
-#' @param outputPath Path and the file name where the output file will be saved. By default it
-#' will be saved in the working directory with the name queryData.
-#' @param verbose By default \code{FALSE}. Change it to \code{TRUE} to get an
-#' on-time log from the function.
+#' @param verbose By default \code{TRUE}.
 #' @return An object of class \code{data.frame} with the query output. 
 #' @examples
 #' 
@@ -20,7 +17,7 @@
 #' @author Alba Gutierrez, Gregoire Versmee
 #' @export run.query
 
-run.query <- function( query, url, responseFormat = "CSV", outputPath = paste0(getwd(), "/queryData.txt") , verbose = TRUE ){
+run.query <- function( query, url, verbose = TRUE ){
   
   IRCT_REST_BASE_URL <- url
   IRCT_CL_SERVICE_URL <- paste(IRCT_REST_BASE_URL,"rest/v1/",sep="")
@@ -72,21 +69,19 @@ run.query <- function( query, url, responseFormat = "CSV", outputPath = paste0(g
   response <- httr::content(httr::GET(paste(IRCT_GET_RESULTS_FORMATS_URL, 
                                             result$resultId, sep = "/")))
   
+  responseFormat <- ".CSV"
   if( ! responseFormat %in% response ){
     message( "Sorry, the", "is not available for this query.")
   }
   
   response <- httr::content(httr::GET(paste(IRCT_GET_RESULTS_URL, 
                                             result$resultId, responseFormat, sep = "/")), as = "text")
-  results <- read.csv(text = response)
+  results <- read.csv(text = response, na.strings = "")
   
   if (nrow(results) == 0) {
     message("There are not results for your query")
     stop()
   }
   colnames(results)[1] <- "patient_id"
-  write.table(results, file = outputPath, 
-              col.names = TRUE, row.names = FALSE, sep = "\t", quote = FALSE)
   return(results)
-  
 }

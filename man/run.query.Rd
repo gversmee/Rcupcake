@@ -4,8 +4,7 @@
 \alias{run.query}
 \title{Query analysis to the API}
 \usage{
-run.query(query, url, responseFormat = "CSV", outputPath = paste0(getwd(),
-  "/queryData.txt"), verbose = TRUE)
+run.query(query, url, verbose = TRUE)
 }
 \arguments{
 \item{query}{A JSON query, created with my.query function or contained in a
@@ -13,11 +12,7 @@ text file.}
 
 \item{url}{The url.}
 
-\item{outputPath}{Path and the file name where the output file will be saved. By default it
-will be saved in the working directory with the name queryData.}
-
-\item{verbose}{By default \code{FALSE}. Change it to \code{TRUE} to get an
-on-time log from the function.}
+\item{verbose}{By default \code{TRUE}.}
 }
 \value{
 An object of class \code{data.frame} with the query output.
