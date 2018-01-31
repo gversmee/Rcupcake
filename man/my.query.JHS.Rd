@@ -5,10 +5,10 @@
 \title{!!!!!!! Fix an issue with The Jackson Heart Study Cohort on Topmed-dev
 Query analysis to the API}
 \usage{
-my.query.JHS(myfields, myvector, url, verbose = FALSE)
+my.query.JHS(varvector, myvector, url, verbose = FALSE)
 }
 \arguments{
-\item{myfields}{A vector with the fields of interest}
+\item{varvector}{A vector with the variables of interest}
 
 \item{myvector}{A vector with the paths of interest, the function will apply the \code{getchildren}
 function}

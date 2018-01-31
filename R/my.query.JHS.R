@@ -4,7 +4,7 @@
 #' Given a vector with the fields of interest, and the vector generated with the paths obtained 
 #' after applying the getchildren function, it returns a JSON query
 #'
-#' @param myfields  A vector with the fields of interest
+#' @param varvector  A vector with the variables of interest
 #' @param myvector  A vector with the paths of interest, the function will apply the \code{getchildren}
 #' function
 #' @param url  The url.
@@ -21,7 +21,7 @@
 # #              )
 #' @export my.query.JHS
 
-my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
+my.query.JHS <- function(varvector, myvector, url, verbose = FALSE) {
   
   
   if( verbose == TRUE){
@@ -37,6 +37,15 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
       pathList <- c(pathList, children)
   }
     
+  varvector <- c("400", "now smoke", "Age(yrs)")
+  varvector <- sub("\\(", "\\\\(", sub("\\)", "\\\\)", test))
+  
+  myfields <- ""
+  for (i in 1:(length(test)-1))  {
+      myfields <- paste0(myfields,varvector[i], "|")
+  }
+  
+  myfields <- paste0(myfields, varvector[i+1])
   
   # Filter fields by values in vector using grep
   pathList <- grep(myfields, pathList, value=TRUE)

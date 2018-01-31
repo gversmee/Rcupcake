@@ -51,7 +51,6 @@ start.session <- function( url, apiKey){
                 Key
             )
         ))
-    startSession
     
     if( names(startSession)[1] == "node"){
         message( "Start Session: failed. Please revise your url and apiKey. Check that your apiKey has not expired.")
