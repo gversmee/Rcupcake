@@ -38,7 +38,7 @@ my.query.JHS <- function(varvector, myvector, url, verbose = FALSE) {
   }
   
   myfields <- ""
-  for (i in 1:(length(test)-1))  {
+  for (i in 1:(length(varvector)-1))  {
       myfields <- paste0(myfields,varvector[i], "|")
   }
   
