@@ -158,5 +158,5 @@ my.query.JHS <- function(myfields, myvector, url, verbose = FALSE) {
   querySTRING <- list( select = querySELECT,
                        where  = list( queryWHERE ) )
   
-  run.query(query = queryString, url = url)
+  run.query(query = querySTRING, url = url)
   }
