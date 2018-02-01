@@ -238,6 +238,7 @@ my.query.JHS <- function(variables, pathways, url, verbose = FALSE) {
   cnames[1] <- "patient_id"
   colnames(results) <- cnames
   
+  message("Success")
   return(results)
 }
   
