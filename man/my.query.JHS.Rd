@@ -5,12 +5,12 @@
 \title{!!!!!!! Fix an issue with The Jackson Heart Study Cohort on Topmed-dev
 Query analysis to the API}
 \usage{
-my.query.JHS(varvector, myvector, url, verbose = FALSE)
+my.query.JHS(variables, pathways, url, verbose = FALSE)
 }
 \arguments{
-\item{varvector}{A vector with the variables of interest}
+\item{variables}{A vector with the variables of interest}
 
-\item{myvector}{A vector with the paths of interest, the function will apply the \code{getchildren}
+\item{pathways}{A vector with the paths of interest, the function will apply the \code{getchildren}
 function}
 
 \item{url}{The url.}
@@ -23,6 +23,9 @@ A JSON query.
 \description{
 Given a vector with the fields of interest, and the vector generated with the paths obtained 
 after applying the getchildren function, it returns a JSON query
+}
+\examples{
+query
 }
 \author{
 Alba Gutierrez, Gregoire Versmee, Gabor Korodi
