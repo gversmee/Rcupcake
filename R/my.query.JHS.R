@@ -218,7 +218,7 @@ my.query.JHS <- function(variables, pathways, url, verbose = FALSE) {
   
   response <- httr::content(httr::GET(paste(IRCT_GET_RESULTS_URL, 
                                             result$resultId, "CSV", sep = "/")), as = "text")
-  results <- read.csv(text = response, na.strings = "")
+  results <- read.csv(text = response, na.strings = "", check.names = FALSE)
   
   if (nrow(results) == 0) {
       message("There are not results for your query")
